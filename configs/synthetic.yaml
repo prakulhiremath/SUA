@@ -1,0 +1,23 @@
+Synthetic benchmark configuration
+experiment: synthetic
+
+data:
+  n_per_regime: 600
+  n_classes: 3
+  n_perturbations: 8
+  seed: 2026
+  error_rates:
+    0: 0.10  # Regime A
+    1: 0.30  # Regime B
+    2: 0.10  # Regime C
+    3: 0.55  # Regime D
+
+metrics:
+  lambda: 1.0
+  lambda_grid: [0.0, 0.1, 0.5, 1.0, 2.0]
+  coverage: 0.80
+  n_ece_bins: 15
+
+output:
+  results_dir: results/
+  figures_dir: figures/
