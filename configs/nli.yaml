@@ -1,0 +1,35 @@
+Real NLI configuration
+experiment: nli
+
+data:
+  n_samples: 400
+  n_perturbations: 8
+  seed: 2026
+
+models:
+  - name: DistilBERT-MNLI
+    model_id: textattack/distilbert-base-uncased-MNLI
+    dataset: multi_nli
+    split: validation_matched
+    temperature: 2.0
+  - name: MiniLM-SNLI
+    model_id: cross-encoder/nli-MiniLM2-L6-H768
+    dataset: snli
+    split: validation
+    temperature: 2.5
+  - name: ANLI-R1
+    model_id: cross-encoder/nli-MiniLM2-L6-H768
+    dataset: anli
+    split: test_r1
+    temperature: 2.5
+
+metrics:
+  lambda_grid: [0.0, 0.1, 0.5, 1.0, 2.0]
+  sh_validity_threshold: 1.0
+  coverage: 0.80
+
+# Expected outcome: entropy wins on standard conditions (SUCCESS)
+# This validates that SUA is NOT a universal replacement for entropy
+expected:
+  entropy_wins_standard: true
+  gap_narrows_adversarial: true
