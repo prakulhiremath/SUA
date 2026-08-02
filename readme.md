@@ -141,7 +141,7 @@ sua/
 │   ├── theory/
 │   │   └── risk_bounds.py      ← Theorem 4.1 / 4.2 computations
 │   └── plotting/
-│       └── paper_figures.py    ← All publication figures
+│       └── figures.py    ← All  figures
 ├── experiments/
 │   ├── synthetic/run_synthetic.py  ← Tier 1
 │   ├── nli/run_nli.py              ← Tier 2
@@ -151,7 +151,7 @@ sua/
 ├── tests/
 │   ├── test_metrics.py
 │   ├── test_evaluation.py
-│   └── test_synthetic.py       ← Integration test for paper claims
+│   └── test_synthetic.py       ← Integration test for claims
 ├── scripts/
 │   ├── generate_figures.py
 │   └── generate_tables.py
