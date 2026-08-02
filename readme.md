@@ -159,8 +159,7 @@ sua/
 │   ├── synthetic.yaml
 │   ├── nli.yaml
 │   └── llm.yaml
-├── reproduce.sh                ← One-command reproduction
-└── results/                    ← Experiment outputs (JSON + LaTeX)
+└── results/                    ← Experiment outputs
 ```
 
 ---
