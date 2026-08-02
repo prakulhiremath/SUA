@@ -16,7 +16,7 @@ from src.utils.logging import get_logger
 logger = get_logger("llm-adv-qa")
 
 SEED = 2026
-N_PERT = 6   # K=6 as in paper (Appendix E)
+N_PERT = 6  
 LAMBDA_GRID = [0.0, 0.1, 0.5, 1.0, 2.0]
 RESULTS_DIR = Path("results")
 
@@ -52,7 +52,7 @@ def get_label_probs(tok, mdl, prompt: str,
     inputs = tok(prompt, return_tensors="pt").to(mdl.device)
     with torch.no_grad():
         out = mdl(**inputs)
-    logits = out.logits[0, -1, :]  # last token
+    logits = out.logits[0, -1, :]
     label_ids = [tok.encode(l, add_special_tokens=False)[0] for l in labels]
     label_logits = logits[label_ids].float().cpu().numpy()
     probs = np.exp(label_logits - label_logits.max())
