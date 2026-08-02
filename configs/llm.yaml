@@ -1,0 +1,45 @@
+# Tier 3: LLM-scale evaluation configuration
+experiment: llm
+
+models:
+  primary:
+    name: Mistral-7B-Instruct-v0.2
+    model_id: mistralai/Mistral-7B-Instruct-v0.2
+    quantization: 4bit
+  replication:
+    name: LLaMA-3-8B-Instruct
+    model_id: meta-llama/Meta-Llama-3-8B-Instruct
+    quantization: 4bit
+
+perturbations:
+  type: mlm_fill_mask
+  model: bert-base-uncased
+  top_k: 8
+  max_positions: 3
+  cosine_threshold: 0.87
+  k: 6
+
+tasks:
+  adversarial_qa:
+    n_factual: 400
+    n_adversarial_per_type: 400
+    types: [entity_substitution, negation_injection, paraphrase_distract]
+  ambiguous_nli:
+    n_samples: 800
+    types: [modal_verbs, quantifier_scope, conditional_framing]
+  ood_classification:
+    base_dataset: ag_news
+    ood_domains: [scientific, legal]
+    n_per_domain: 500
+
+metrics:
+  lambda_grid: [0.0, 0.1, 0.5, 1.0, 2.0]
+  sh_validity_threshold: 1.0
+  coverage: 0.90
+  n_seeds: 3
+
+# Compute requirements
+compute:
+  gpu: A100-40GB
+  n_gpus: 2
+  estimated_hours: 62
