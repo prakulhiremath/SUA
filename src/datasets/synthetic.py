@@ -1,16 +1,3 @@
-"""Synthetic four-regime benchmark (Tier 1 of the paper).
-
-Design from Section 5.1:
-  2,400 samples (600 per regime) from a Dirichlet generative model that
-  independently varies S_theta and H_theta, directly instantiating Table 1.
-  Ground-truth errors are assigned as a noisy sigmoid of S_theta only,
-  with regime error rates 10%/30%/10%/55% for A/B/C/D.
-
-This benchmark directly tests whether SUA detects the Regime D failure
-mode by construction. It does NOT simulate any particular model's failure
-distribution — it is a controlled stress test.
-"""
-
 from __future__ import annotations
 import numpy as np
 from dataclasses import dataclass
