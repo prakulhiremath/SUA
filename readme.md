@@ -87,13 +87,13 @@ bash reproduce.sh --test    # Unit tests only
 ### Tier-by-tier
 
 ```bash
-# Tier 1: Synthetic benchmark (reproduces Table 1, Figs 1–6)
+# Tier 1: Synthetic benchmark
 python experiments/synthetic/run_synthetic.py
 
-# Tier 2: Real NLI (reproduces Table tab:real_sh)
+# Tier 2: Real NLI 
 python experiments/nli/run_nli.py
 
-# Tier 3: LLM adversarial QA (reproduces Table tab:llm_qa, requires GPU)
+# Tier 3: LLM adversarial QA 
 python experiments/llm/run_adversarial_qa.py --model mistral
 python experiments/llm/run_adversarial_qa.py --model llama   # replication
 
